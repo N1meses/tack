@@ -171,6 +171,13 @@ enum Cli {
         names:   Vec<String>,
     },
     /// add a pin
+    #[pound(after_help = "examples:
+  tack add nixpkgs github:NixOS/nixpkgs/nixos-unstable
+  tack add bagel github:manic-systems/bagel --follows nixpkgs
+  tack add nix git+https://github.com/NixOS/nix?ref=2.31-maintenance --fetch
+  tack add proton-ge github:GloriousEggroll/proton-ge-custom --fetch --tag GE-Proton{version}
+  tack add nvim 'https://github.com/neovim/neovim/releases/download/{tag}/nvim-linux-x86_64.tar.gz' \\
+    --fixed --tag 'v{version}'")]
     Add {
         /// input name
         name:       String,
@@ -208,6 +215,10 @@ enum Cli {
         name: String,
     },
     /// define or remove a shorturl alias
+    #[pound(after_help = "examples:
+  tack alias gh 'github:{path}'
+  tack alias manic 'gh:manic-systems/{path}'
+  tack alias --rm manic")]
     Alias {
         /// alias name
         name:     String,
